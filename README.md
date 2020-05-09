@@ -1,5 +1,7 @@
 # Skull Kid Says
 
+A Legend of Zelda twist on Simon Says!
+
 1. When start button is clicked, begin game and round counter
 2. Randomly generate color to display, play sound
 3. Ensure color displays for a set amount of time, and disappears before it listens for a click
