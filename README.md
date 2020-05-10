@@ -1,6 +1,6 @@
 # Skull Kid Says
 
-A Legend of Zelda twist on Simon Says!
+A Legend of Zelda twist on Simon!
 
 1. When start button is clicked, begin game and round counter
 2. Randomly generate color to display, play sound
