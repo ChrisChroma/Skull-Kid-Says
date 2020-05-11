@@ -9,3 +9,7 @@ A Legend of Zelda twist on Simon!
 5. If colors were wrongly clicked, end game, play game end sound
 6. If colors were correctly clicked, start next round
 7. Display previous color and new color# Skull-Kid-Says
+
+# Technologies Used
+
+JS CSS HTML GitHub
