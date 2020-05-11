@@ -27,6 +27,7 @@ const theme = [
 
 // Cache Element References
 const msgEl = document.getElementById('message');
+const gamePiece = document.querySelectorAll('.game-piece');
 const red = document.getElementById('red');
 const green = document.getElementById('green');
 const blue = document.getElementById('blue');
@@ -64,16 +65,13 @@ start.addEventListener('click', function(){
 init();
 
 function init(){
-  // red.style.borderBottom = "200px solid black";
-  // green.style.borderBottom = "200px solid black";
-  // blue.style.borderBottom = "200px solid black";
-  // yellow.style.borderTop = "200px solid black";
+  playerChoice = [];
   rounds = [];
   render();
 }
 
 function randColor () {
-  let randIdx = Math.floor(Math.random() * 4);
+  let randIdx = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
   let randColor = colors[randIdx];
   return randColor;
 }
@@ -81,13 +79,13 @@ function randColor () {
 function play(){
   let color = randColor();
   if (color === 'yellow') {
-    yellow.style.borderTop = "200px solid gold";
+    yellow.style.backgroundColor ="gold";
   } else if (color === 'red') {
-    red.style.borderBottom = "200px solid red";
+    red.style.backgroundColor ="red";
   } else if (color === 'green') {
-    green.style.borderBottom = "200px solid green";
+    green.style.backgroundColor ="green";
   } else if (color === 'blue') {
-    blue.style.borderBottom = "200px solid blue";
+    blue.style.backgroundColor = "blue";
   }
   rounds.push(color);
   console.log(rounds);
@@ -98,7 +96,7 @@ function checkRound(col) {
 }
 
 function render () {
-
+  
 }
 
 render();
