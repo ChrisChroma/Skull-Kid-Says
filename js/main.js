@@ -6,6 +6,9 @@ const colors = {
     4: 'yellow'
 }
 
+let rounds = [];
+let playerChoice = [];
+
 const theme = [
   {
     name: "lostWoods",
@@ -23,6 +26,7 @@ const theme = [
 ];
 
 // Cache Element References
+const msgEl = document.getElementById('message');
 const red = document.getElementById('red');
 const green = document.getElementById('green');
 const blue = document.getElementById('blue');
@@ -34,18 +38,22 @@ const menu = document.getElementById('themeMenu');
 
 red.addEventListener('click', function(){
     console.log('Red is clicked!')
+    playerChoice.push('red')
 })
 
 green.addEventListener('click', function(){
     console.log('Green is clicked!')
+    playerChoice.push('green')
 })
 
 blue.addEventListener('click', function(){
     console.log('Blue is clicked!')
+    playerChoice.push('blue');
 })
 
 yellow.addEventListener('click', function(){
     console.log('Yellow is clicked!')
+    playerChoice.push('yellow');
 })
 
 start.addEventListener('click', function(){
@@ -56,10 +64,12 @@ start.addEventListener('click', function(){
 init();
 
 function init(){
-  red.style.borderBottom = "200px solid black";
-  green.style.borderBottom = "200px solid black";
-  blue.style.borderBottom = "200px solid black";
-  yellow.style.borderTop = "200px solid black";
+  // red.style.borderBottom = "200px solid black";
+  // green.style.borderBottom = "200px solid black";
+  // blue.style.borderBottom = "200px solid black";
+  // yellow.style.borderTop = "200px solid black";
+  rounds = [];
+  render();
 }
 
 function randColor () {
@@ -69,7 +79,22 @@ function randColor () {
 }
 
 function play(){
-  randColor();
+  let color = randColor();
+  if (color === 'yellow') {
+    yellow.style.borderTop = "200px solid gold";
+  } else if (color === 'red') {
+    red.style.borderBottom = "200px solid red";
+  } else if (color === 'green') {
+    green.style.borderBottom = "200px solid green";
+  } else if (color === 'blue') {
+    blue.style.borderBottom = "200px solid blue";
+  }
+  rounds.push(color);
+  console.log(rounds);
+}
+
+function checkRound(col) {
+
 }
 
 function render () {
