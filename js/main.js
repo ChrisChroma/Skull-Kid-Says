@@ -91,12 +91,26 @@ function play(){
   console.log(rounds);
 }
 
-function checkRound(col) {
+function colorFlash() {
+  let timer = 1000;
+  rounds.forEach(function(color) {
+    timer += 1000;
+    setTimeout(() => {
+      play(colors[color]);
+    }, timer + 500);
+  })
+}
 
+function checkRound(rnd, plyr) {
+  if (rnd === plyr) {
+    console.log('nice!');
+  } else {
+    console.log('not nice!');
+  }
 }
 
 function render () {
-  
+
 }
 
 render();
