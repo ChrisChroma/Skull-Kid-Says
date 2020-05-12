@@ -93,16 +93,16 @@ function play(){
 
 function colorFlash() {
   let timer = 1000;
-  rounds.forEach(function(color) {
+    rounds.forEach(function(color) {
     timer += 1000;
     setTimeout(() => {
       play(colors[color]);
     }, timer + 500);
-  })
-}
+    })
+  }
 
-function checkRound(rnd, plyr) {
-  if (rnd === plyr) {
+function checkRound(rnd) {
+  if (rounds[rnd] === playerChoice[rnd]) {
     console.log('nice!');
   } else {
     console.log('not nice!');
@@ -110,7 +110,8 @@ function checkRound(rnd, plyr) {
 }
 
 function render () {
-
+  blue.style.backgroundColor = "lightgray";
+  green.style.backgroundColor = "lightgray";
+  red.style.backgroundColor = "lightgray";
+  yellow.style.backgroundColor = "lightgray";
 }
-
-render();
