@@ -1,77 +1,22 @@
-// Constants
-const colors = ["red", "green", "yellow", "blue"];
-
-let round = 0;
-let computerChoice = [];
-let playerChoice = [];
-
-const theme = [
-  {
-    name: "lostWoods",
-    background: "https://i.ytimg.com/vi/ecnb7qOl4Pc/maxresdefault.jpg",
-  },
-  {
-    name: "clockTown",
-    background:
-      "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
-  },
-  {
-    name: "songOfStorms",
-    background:
-      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
-  },
-];
-
-// Cache Element References
-const msgEl = document.getElementById("message");
-const gamePieces = document.querySelectorAll(".game-piece");
-const start = document.getElementById("start");
-const menu = document.getElementById("themeMenu");
-
-// Event Listeners
-
-gamePieces.forEach(function (element) {
-  element.addEventListener("click", function (event) {
-    playerChoice.push(event.target.id);
-    console.log(`${event.target.id} is clicked!`);
-  });
-});
-
-start.addEventListener("click", function () {
-  play();
-});
-
 // Functions
-
 function getRandomNum() {
   return Math.floor(Math.random() * (3 - 0 + 1)) + 0;
 }
 
-function getComputerSelection(round) {
-  let randomNums = [];
+function getComputerSelection(round, compSelectArr) {
   for (let i = 0; i < round; i++) {
     const randomNum = getRandomNum();
-    randomNums.push(randomNum);
+    compSelectArr.push(randomNum);
   }
-  return randomNums;
 }
 
-function play() {
-  let color = getRandomNum();
-  round += 1;
-  computerChoice.push(color);
-  colorFlash();
-  console.log(computerChoice);
-}
-
-function colorFlash() {
+function colorFlash(compChoice, pieces) {
   let timer = 0;
-  computerChoice.forEach(function (num) {
-    console.log("timer", timer);
+  compChoice.forEach(function (num) {
     setTimeout(() => {
-      gamePieces[num].style.backgroundColor = colors[num];
+      pieces[num].style.backgroundColor = colors[num];
       setTimeout(() => {
-        gamePieces[num].style.backgroundColor = "lightgray";
+        pieces[num].style.backgroundColor = "lightgray";
       }, 750);
     }, timer + 500);
     timer += 1000;
@@ -94,10 +39,84 @@ function gamePieceReset() {
   yellow.style.backgroundColor = "lightgray";
 }
 
-function init() {
-  round = 0;
+function play(round, computerChoice, gamePieces) {
+  round += 1;
+  getComputerSelection(round, computerChoice);
+  colorFlash(computerChoice, gamePieces);
   playerChoice = [];
-  computerChoice = getComputerSelection(round);
 }
+
+// Constants
+const colors = ["red", "green", "yellow", "blue"];
+let computerChoice = [];
+let round = 0;
+getComputerSelection(round, computerChoice);
+let playerChoice = [];
+
+const theme = [
+  {
+    name: "lostWoods",
+    background: "https://i.ytimg.com/vi/ecnb7qOl4Pc/maxresdefault.jpg",
+  },
+  {
+    name: "clockTown",
+    background:
+      "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
+  },
+  {
+    name: "songOfStorms",
+    background:
+      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
+  },
+];
+
+function reset() {
+  computerChoice = [];
+  round = 0;
+  getComputerSelection(round, computerChoice);
+  playerChoice = [];
+}
+
+function init() {
+  // Cache Element References
+  const msgEl = document.getElementById("message");
+  const gamePieces = document.querySelectorAll(".game-piece");
+  const start = document.getElementById("start");
+  const menu = document.getElementById("themeMenu");
+
+  start.addEventListener("click", function () {
+    play(round, computerChoice, gamePieces);
+  });
+
+  // Event Listeners
+  gamePieces.forEach(function (element) {
+    element.addEventListener("click", function (event) {
+      playerChoice.push(event.target.id);
+
+      let playerChoices = [];
+      playerChoice.forEach(function (color) {
+        playerChoices.push(colors.indexOf(color));
+      });
+
+      console.log(
+        "computerChoice",
+        computerChoice.slice(0, playerChoices.length)
+      );
+      console.log("playerChoices", playerChoices);
+
+      if (JSON.stringify(playerChoices) === JSON.stringify(computerChoice)) {
+        console.log("They are equal!");
+        play(round, computerChoice, gamePieces);
+      } else {
+        // reset();
+      }
+    });
+  });
+}
+
+// Bugs: 
+// Reset bug
+// onClick doesn't trigger active state (buttons don't change color on click)
+
 
 init();
