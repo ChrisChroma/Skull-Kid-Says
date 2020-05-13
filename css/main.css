@@ -13,6 +13,19 @@ body {
   background-size: cover;
 }
 
+#showMenu {
+  border: 1px solid black;
+  margin: 20px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+#showMenu:active {
+  background-color: gray;
+}
+
 .theme {
   border: 1px solid black;
   margin: 20px;

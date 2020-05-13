@@ -8,28 +8,32 @@ let playerChoice = [];
 const theme = [
   {
     name: "lostWoods",
+    music: new Audio("audio/Sarias Theme SSBU.mp3"),
     background:
-      "https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311",
+      "url(https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311)",
   },
   {
     name: "clockTown",
-    music: "audio/108 Clock Town Day 1.mp3",
+    music: new Audio("audio/Clock Town Day 1.mp3"),
     background:
-      "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
+      "url(https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg)",
   },
   {
     name: "songOfStorms",
+    music: new Audio("audio/Song of Storms SSBU.mp3"),
     background:
-      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
+      "url(https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg)",
   },
 ];
 
 // Cache Element References
+const body = document.querySelector("body");
 const msgEl = document.getElementById("message");
 const gamePieces = document.querySelectorAll(".game-piece");
 const start = document.getElementById("start");
 const menu = document.getElementById("themeMenu");
-const bgPlayer = new Audio("audio/108 Clock Town Day 1.mp3");
+const showMenu = document.getElementById("showMenu");
+const themeMenu = document.getElementById("themeMenu");
 
 // Event Listeners
 gamePieces.forEach(function (element) {
@@ -61,6 +65,10 @@ gamePieces.forEach(function (element) {
 
 start.addEventListener("click", function () {
   play(round, computerChoice, gamePieces);
+});
+
+themeMenu.addEventListener("click", function (element) {
+  console.log(event.target.id);
 });
 
 // Functions
@@ -122,11 +130,10 @@ function selectTheme(background, music) {
   body.style.backgroundImage = theme;
 }
 
-function playBgMusic(name) {
-  bgPlayer.muted = true;
-  bgPlayer.volume = 0.05;
-  bgPlayer.loop = true;
-  bgPlayer.play();
+function playBgMusic(themeChoice) {
+  theme[themeChoice].music.volume = 0.05;
+  theme[themeChoice].music.loop = true;
+  theme[themeChoice].music.play();
 }
 
 function init() {
