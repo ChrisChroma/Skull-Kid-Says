@@ -96,14 +96,6 @@ function colorFlash(compChoice, pieces) {
   }, timer - 1000);
 }
 
-function checkRound(rnd) {
-  if (computerChoice[rnd] === playerChoice[rnd]) {
-    console.log("nice!");
-  } else {
-    console.log("not nice!");
-  }
-}
-
 function gamePieceReset() {
   console.count("called");
   blue.style.backgroundColor = "lightgray";
@@ -127,11 +119,11 @@ function reset() {
 }
 
 function selectTheme(background, music) {
-  body.style.backgroundImage = theme
+  body.style.backgroundImage = theme;
 }
 
 function playBgMusic(name) {
-  bgPlayer.volume = 0.3;
+  bgPlayer.volume = 0.05;
   bgPlayer.loop = true;
   bgPlayer.play();
 }
