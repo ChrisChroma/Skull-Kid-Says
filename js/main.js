@@ -1,3 +1,62 @@
+// Constants
+const colors = ["red", "green", "gold", "blue"];
+let computerChoice = [];
+let round = 0;
+getComputerSelection(round, computerChoice);
+let playerChoice = [];
+
+const theme = [
+  {
+    name: "lostWoods",
+    background: "https://i.ytimg.com/vi/ecnb7qOl4Pc/maxresdefault.jpg",
+  },
+  {
+    name: "clockTown",
+    background:
+      "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
+  },
+  {
+    name: "songOfStorms",
+    background:
+      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
+  },
+];
+
+// Cache Element References
+const msgEl = document.getElementById("message");
+const gamePieces = document.querySelectorAll(".game-piece");
+const start = document.getElementById("start");
+const menu = document.getElementById("themeMenu");
+
+// Event Listeners
+gamePieces.forEach(function (element) {
+  element.addEventListener("click", function (event) {
+    playerChoice.push(event.target.id);
+
+    let playerChoices = [];
+    playerChoice.forEach(function (color) {
+      playerChoices.push(colors.indexOf(color));
+    });
+
+    console.log(
+      "computerChoice",
+      computerChoice.slice(0, playerChoices.length)
+    );
+    console.log("playerChoices", playerChoices);
+
+    if (JSON.stringify(playerChoices) === JSON.stringify(computerChoice)) {
+      console.log("They are equal!");
+      play(round, computerChoice, gamePieces);
+    } else {
+      reset();
+    }
+  });
+});
+
+start.addEventListener("click", function () {
+  play(round, computerChoice, gamePieces);
+});
+
 // Functions
 function getRandomNum() {
   return Math.floor(Math.random() * (3 - 0 + 1)) + 0;
@@ -48,36 +107,12 @@ function gamePieceReset() {
   yellow.style.backgroundColor = "lightgray";
 }
 
-function play(round, computerChoice, gamePieces) {
+function play() {
   round += 1;
   getComputerSelection(round, computerChoice);
   colorFlash(computerChoice, gamePieces);
   playerChoice = [];
 }
-
-// Constants
-const colors = ["red", "green", "gold", "blue"];
-let computerChoice = [];
-let round = 0;
-getComputerSelection(round, computerChoice);
-let playerChoice = [];
-
-const theme = [
-  {
-    name: "lostWoods",
-    background: "https://i.ytimg.com/vi/ecnb7qOl4Pc/maxresdefault.jpg",
-  },
-  {
-    name: "clockTown",
-    background:
-      "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
-  },
-  {
-    name: "songOfStorms",
-    background:
-      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
-  },
-];
 
 function reset() {
   computerChoice = [];
@@ -86,42 +121,7 @@ function reset() {
   playerChoice = [];
 }
 
-function init() {
-  // Cache Element References
-  const msgEl = document.getElementById("message");
-  const gamePieces = document.querySelectorAll(".game-piece");
-  const start = document.getElementById("start");
-  const menu = document.getElementById("themeMenu");
-
-  start.addEventListener("click", function () {
-    play(round, computerChoice, gamePieces);
-  });
-
-  // Event Listeners
-  gamePieces.forEach(function (element) {
-    element.addEventListener("click", function (event) {
-      playerChoice.push(event.target.id);
-
-      let playerChoices = [];
-      playerChoice.forEach(function (color) {
-        playerChoices.push(colors.indexOf(color));
-      });
-
-      console.log(
-        "computerChoice",
-        computerChoice.slice(0, playerChoices.length)
-      );
-      console.log("playerChoices", playerChoices);
-
-      if (JSON.stringify(playerChoices) === JSON.stringify(computerChoice)) {
-        console.log("They are equal!");
-        play(round, computerChoice, gamePieces);
-      } else {
-        // reset();
-      }
-    });
-  });
-}
+function init() {}
 
 // Bugs:
 // Reset bug
