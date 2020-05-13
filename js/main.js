@@ -1,5 +1,5 @@
 // Constants
-const colors = ["red", "green", "blue", "yellow"];
+const colors = ["red", "green", "yellow", "blue"];
 
 let round = 0;
 let computerChoice = [];
@@ -30,7 +30,6 @@ const menu = document.getElementById("themeMenu");
 
 // Event Listeners
 
-console.log("gamePieces", gamePieces);
 gamePieces.forEach(function (element) {
   element.addEventListener("click", function (event) {
     playerChoice.push(event.target.id);
@@ -50,7 +49,7 @@ function getRandomNum() {
 
 function getComputerSelection(round) {
   let randomNums = [];
-  for (let i = 0; i <= round; i++) {
+  for (let i = 0; i < round; i++) {
     const randomNum = getRandomNum();
     randomNums.push(randomNum);
   }
@@ -59,15 +58,6 @@ function getComputerSelection(round) {
 
 function play() {
   let color = getRandomNum();
-  if (color === "yellow") {
-    yellow.style.backgroundColor = "gold";
-  } else if (color === "red") {
-    red.style.backgroundColor = "red";
-  } else if (color === "green") {
-    green.style.backgroundColor = "green";
-  } else if (color === "blue") {
-    blue.style.backgroundColor = "blue";
-  }
   round += 1;
   computerChoice.push(color);
   colorFlash();
@@ -75,12 +65,16 @@ function play() {
 }
 
 function colorFlash() {
-  let timer = 1000;
-  computerChoice.forEach(function (color) {
-    timer += 1000;
+  let timer = 0;
+  computerChoice.forEach(function (num) {
+    console.log("timer", timer);
     setTimeout(() => {
-      play(colors[color]);
+      gamePieces[num].style.backgroundColor = colors[num];
+      setTimeout(() => {
+        gamePieces[num].style.backgroundColor = "lightgray";
+      }, 750);
     }, timer + 500);
+    timer += 1000;
   });
 }
 
@@ -93,6 +87,7 @@ function checkRound(rnd) {
 }
 
 function gamePieceReset() {
+  console.count("called");
   blue.style.backgroundColor = "lightgray";
   green.style.backgroundColor = "lightgray";
   red.style.backgroundColor = "lightgray";
@@ -100,10 +95,9 @@ function gamePieceReset() {
 }
 
 function init() {
-  round = 1;
+  round = 0;
   playerChoice = [];
   computerChoice = getComputerSelection(round);
-  gamePieceReset();
 }
 
 init();
