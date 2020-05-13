@@ -8,10 +8,12 @@ let playerChoice = [];
 const theme = [
   {
     name: "lostWoods",
-    background: "https://i.ytimg.com/vi/ecnb7qOl4Pc/maxresdefault.jpg",
+    background:
+      "https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311",
   },
   {
     name: "clockTown",
+    music: "audio/108 Clock Town Day 1.mp3",
     background:
       "https://i.pinimg.com/originals/d7/7f/8c/d77f8c43dec780ed972d3baf73471136.jpg",
   },
@@ -27,6 +29,7 @@ const msgEl = document.getElementById("message");
 const gamePieces = document.querySelectorAll(".game-piece");
 const start = document.getElementById("start");
 const menu = document.getElementById("themeMenu");
+const bgPlayer = new Audio("audio/108 Clock Town Day 1.mp3");
 
 // Event Listeners
 gamePieces.forEach(function (element) {
@@ -38,17 +41,20 @@ gamePieces.forEach(function (element) {
       playerChoices.push(colors.indexOf(color));
     });
 
-    console.log(
-      "computerChoice",
-      computerChoice.slice(0, playerChoices.length)
-    );
+    console.log("computerChoice", computerChoice);
     console.log("playerChoices", playerChoices);
 
-    if (JSON.stringify(playerChoices) === JSON.stringify(computerChoice)) {
-      console.log("They are equal!");
-      play(round, computerChoice, gamePieces);
+    if (
+      JSON.stringify(playerChoices) ===
+      JSON.stringify(computerChoice.slice(0, playerChoice.length))
+    ) {
+      if (playerChoices.length === computerChoice.length) {
+        console.log("They are equal!");
+        play(round, computerChoice, gamePieces);
+      }
     } else {
-      // reset();
+      console.log("You Lose.");
+      reset();
     }
   });
 });
@@ -72,7 +78,6 @@ function getComputerSelection(round, compSelectArr) {
 function colorFlash(compChoice, pieces) {
   pieces.forEach(function (element) {
     element.disabled = true;
-    console.log(element);
   });
   let timer = 0;
   compChoice.forEach(function (num) {
@@ -121,10 +126,18 @@ function reset() {
   playerChoice = [];
 }
 
-function init() {}
+function selectTheme(background, music) {
+  body.style.backgroundImage = theme
+}
 
-// Bugs:
-// Reset bug
-// onClick doesn't trigger active state (buttons don't change color on click)
+function playBgMusic(name) {
+  bgPlayer.volume = 0.3;
+  bgPlayer.loop = true;
+  bgPlayer.play();
+}
+
+function init() {
+  playBgMusic();
+}
 
 init();

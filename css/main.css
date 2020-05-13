@@ -9,6 +9,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311);
+  background-size: cover;
+}
+
+.theme {
+  border: 1px solid black;
+  margin: 20px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.theme:active {
+  background-color: gray;
 }
 
 #game-board {
