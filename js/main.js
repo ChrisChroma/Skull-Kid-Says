@@ -11,6 +11,10 @@ function getComputerSelection(round, compSelectArr) {
 }
 
 function colorFlash(compChoice, pieces) {
+  pieces.forEach(function (element) {
+    element.disabled = true;
+    console.log(element);
+  });
   let timer = 0;
   compChoice.forEach(function (num) {
     setTimeout(() => {
@@ -21,6 +25,11 @@ function colorFlash(compChoice, pieces) {
     }, timer + 500);
     timer += 1000;
   });
+  setTimeout(() => {
+    pieces.forEach(function (element) {
+      element.disabled = false;
+    });
+  }, timer - 1000);
 }
 
 function checkRound(rnd) {
@@ -47,7 +56,7 @@ function play(round, computerChoice, gamePieces) {
 }
 
 // Constants
-const colors = ["red", "green", "yellow", "blue"];
+const colors = ["red", "green", "gold", "blue"];
 let computerChoice = [];
 let round = 0;
 getComputerSelection(round, computerChoice);
@@ -114,9 +123,8 @@ function init() {
   });
 }
 
-// Bugs: 
+// Bugs:
 // Reset bug
 // onClick doesn't trigger active state (buttons don't change color on click)
-
 
 init();

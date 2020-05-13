@@ -52,20 +52,20 @@ body {
 
 #red:active,
 #red:hover {
-  background-color: red;
+  background-color: red !important;
 }
 
 #green:active,
 #green:hover {
-  background-color: green;
+  background-color: green !important;
 }
 
 #blue:active,
 #blue:hover {
-  background-color: blue;
+  background-color: blue !important;
 }
 
 #yellow:active,
 #yellow:hover {
-  background-color: gold;
+  background-color: gold !important;
 }
