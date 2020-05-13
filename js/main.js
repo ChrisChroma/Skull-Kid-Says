@@ -48,7 +48,7 @@ gamePieces.forEach(function (element) {
       console.log("They are equal!");
       play(round, computerChoice, gamePieces);
     } else {
-      reset();
+      // reset();
     }
   });
 });
@@ -107,7 +107,7 @@ function gamePieceReset() {
   yellow.style.backgroundColor = "lightgray";
 }
 
-function play() {
+function play(round, computerChoice, gamePieces) {
   round += 1;
   getComputerSelection(round, computerChoice);
   colorFlash(computerChoice, gamePieces);
