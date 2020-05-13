@@ -126,18 +126,25 @@ function reset() {
   playerChoice = [];
 }
 
-function selectTheme(background, music) {
-  body.style.backgroundImage = theme;
+function selectTheme(themeChoice) {
+  let music = theme.music;
+  music.pause();
+  changeBg(themeChoice);
+  playBgMusic(themeChoice);
+}
+
+function changeBg(themeChoice) {
+  body.style.backgroundImage = theme[themeChoice].background;
 }
 
 function playBgMusic(themeChoice) {
   theme[themeChoice].music.volume = 0.05;
-  theme[themeChoice].music.loop = true;
+  // theme[themeChoice].music.loop = true;
   theme[themeChoice].music.play();
 }
 
 function init() {
-  playBgMusic();
+  selectTheme(0);
 }
 
 init();
