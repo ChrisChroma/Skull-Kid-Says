@@ -123,6 +123,7 @@ function selectTheme(background, music) {
 }
 
 function playBgMusic(name) {
+  bgPlayer.muted = muted;
   bgPlayer.volume = 0.05;
   bgPlayer.loop = true;
   bgPlayer.play();
