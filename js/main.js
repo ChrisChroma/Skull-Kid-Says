@@ -1,12 +1,8 @@
 // Constants
-const colors = {
-    1: 'red',
-    2: 'green',
-    3: 'blue',
-    4: 'yellow'
-}
+const colors = ["red", "green", "blue", "yellow"];
 
-let rounds = [];
+let round = 0;
+let computerChoice = [];
 let playerChoice = [];
 
 const theme = [
@@ -21,97 +17,93 @@ const theme = [
   },
   {
     name: "songOfStorms",
-    background: "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
+    background:
+      "https://i.pinimg.com/originals/6b/90/9e/6b909e88b59dab6b460c05d4e1334f4a.jpg",
   },
 ];
 
 // Cache Element References
-const msgEl = document.getElementById('message');
-const gamePiece = document.querySelectorAll('.game-piece');
-const red = document.getElementById('red');
-const green = document.getElementById('green');
-const blue = document.getElementById('blue');
-const yellow = document.getElementById('yellow')
-const start = document.getElementById('start');
-const menu = document.getElementById('themeMenu');
+const msgEl = document.getElementById("message");
+const gamePieces = document.querySelectorAll(".game-piece");
+const start = document.getElementById("start");
+const menu = document.getElementById("themeMenu");
 
 // Event Listeners
 
-red.addEventListener('click', function(){
-    console.log('Red is clicked!')
-    playerChoice.push('red')
-})
+console.log("gamePieces", gamePieces);
+gamePieces.forEach(function (element) {
+  element.addEventListener("click", function (event) {
+    playerChoice.push(event.target.id);
+    console.log(`${event.target.id} is clicked!`);
+  });
+});
 
-green.addEventListener('click', function(){
-    console.log('Green is clicked!')
-    playerChoice.push('green')
-})
-
-blue.addEventListener('click', function(){
-    console.log('Blue is clicked!')
-    playerChoice.push('blue');
-})
-
-yellow.addEventListener('click', function(){
-    console.log('Yellow is clicked!')
-    playerChoice.push('yellow');
-})
-
-start.addEventListener('click', function(){
+start.addEventListener("click", function () {
   play();
-})
+});
+
 // Functions
 
-init();
-
-function init(){
-  playerChoice = [];
-  rounds = [];
-  render();
+function getRandomNum() {
+  return Math.floor(Math.random() * (3 - 0 + 1)) + 0;
 }
 
-function randColor () {
-  let randIdx = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
-  let randColor = colors[randIdx];
-  return randColor;
+function getComputerSelection(round) {
+  let randomNums = [];
+  for (let i = 0; i <= round; i++) {
+    const randomNum = getRandomNum();
+    randomNums.push(randomNum);
+  }
+  return randomNums;
 }
 
-function play(){
-  let color = randColor();
-  if (color === 'yellow') {
-    yellow.style.backgroundColor ="gold";
-  } else if (color === 'red') {
-    red.style.backgroundColor ="red";
-  } else if (color === 'green') {
-    green.style.backgroundColor ="green";
-  } else if (color === 'blue') {
+function play() {
+  let color = getRandomNum();
+  if (color === "yellow") {
+    yellow.style.backgroundColor = "gold";
+  } else if (color === "red") {
+    red.style.backgroundColor = "red";
+  } else if (color === "green") {
+    green.style.backgroundColor = "green";
+  } else if (color === "blue") {
     blue.style.backgroundColor = "blue";
   }
-  rounds.push(color);
-  console.log(rounds);
+  round += 1;
+  computerChoice.push(color);
+  colorFlash();
+  console.log(computerChoice);
 }
 
 function colorFlash() {
   let timer = 1000;
-    rounds.forEach(function(color) {
+  computerChoice.forEach(function (color) {
     timer += 1000;
     setTimeout(() => {
       play(colors[color]);
     }, timer + 500);
-    })
-  }
+  });
+}
 
 function checkRound(rnd) {
-  if (rounds[rnd] === playerChoice[rnd]) {
-    console.log('nice!');
+  if (computerChoice[rnd] === playerChoice[rnd]) {
+    console.log("nice!");
   } else {
-    console.log('not nice!');
+    console.log("not nice!");
   }
 }
 
-function render () {
+function gamePieceReset() {
   blue.style.backgroundColor = "lightgray";
   green.style.backgroundColor = "lightgray";
   red.style.backgroundColor = "lightgray";
   yellow.style.backgroundColor = "lightgray";
 }
+
+function init() {
+  round = 1;
+  playerChoice = [];
+  computerChoice = getComputerSelection(round);
+  gamePieceReset();
+}
+
+init();
