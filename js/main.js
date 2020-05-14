@@ -4,8 +4,9 @@ let computerChoice = [];
 let round = 0;
 getComputerSelection(round, computerChoice);
 let playerChoice = [];
+let themeChoice = [];
 
-const theme = [
+const themes = [
   {
     name: "lostWoods",
     music: new Audio("audio/Sarias Theme SSBU.mp3"),
@@ -34,6 +35,7 @@ const start = document.getElementById("start");
 const menu = document.getElementById("themeMenu");
 const showMenu = document.getElementById("showMenu");
 const themeMenu = document.getElementById("themeMenu");
+const themeBtn = document.querySelectorAll(".theme");
 
 // Event Listeners
 gamePieces.forEach(function (element) {
@@ -57,7 +59,7 @@ gamePieces.forEach(function (element) {
         play(round, computerChoice, gamePieces);
       }
     } else {
-      console.log("You Lose.");
+      msgEl.innerText = "Skull Kid Says: Ehehe! Better luck next time!";
       reset();
     }
   });
@@ -67,8 +69,13 @@ start.addEventListener("click", function () {
   play(round, computerChoice, gamePieces);
 });
 
-themeMenu.addEventListener("click", function (element) {
-  console.log(event.target.id);
+themeBtn.addEventListener("click", function (element) {
+  themeChoice.push(event.target.id);
+  console.log("themeChoice", themeChoice);
+  let themeChoices = [];
+  themeChoice.forEach(function (theme) {
+    themeChoices.push(themes.indexOf(theme));
+  });
 });
 
 // Functions
@@ -117,6 +124,7 @@ function play(round, computerChoice, gamePieces) {
   getComputerSelection(round, computerChoice);
   colorFlash(computerChoice, gamePieces);
   playerChoice = [];
+  msgEl.innerText = "Skull Kid Says";
 }
 
 function reset() {
@@ -127,20 +135,23 @@ function reset() {
 }
 
 function selectTheme(themeChoice) {
-  let music = theme.music;
-  music.pause();
+  // let music = theme.music;
+  // music.pause();
   changeBg(themeChoice);
   playBgMusic(themeChoice);
 }
 
 function changeBg(themeChoice) {
-  body.style.backgroundImage = theme[themeChoice].background;
+  body.style.backgroundImage = themes[themeChoice].background;
 }
 
 function playBgMusic(themeChoice) {
-  theme[themeChoice].music.volume = 0.05;
+  themes[themeChoice].music.volume = 0.05;
   // theme[themeChoice].music.loop = true;
-  theme[themeChoice].music.play();
+  themes[themeChoice].music.play();
+  setTimeout(function () {
+    themes[themeChoice].music.pause();
+  }, 40000);
 }
 
 function init() {

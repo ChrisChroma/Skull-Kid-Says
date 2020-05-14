@@ -1,15 +1,23 @@
 # Skull Kid Says
 
-A Legend of Zelda twist on Simon!
+---
 
-1. When start button is clicked, begin game and round counter
-2. Randomly generate color to display, play sound
-3. Ensure color displays for a set amount of time, and disappears before it listens for a click
-4. Check if colors clicked were ones displayed
-5. If colors were wrongly clicked, end game, play game end sound
-6. If colors were correctly clicked, start next round
-7. Display previous color and new color# Skull-Kid-Says
+## By Chris White
 
-# Technologies Used
+---
+
+A Legend of Zelda twist on the classic game of Simon. A game of flashing colors that the player must memorize and repeat in the correct order.
+
+---
+
+## Technologies Used
 
 JS CSS HTML GitHub
+
+---
+
+## Getting Started
+
+When the player opens the game up, they can select a theme with a background song to alongside it. They then push the start button and the game begins with a random color being flashed to the player, which the player must correctly choose the flashed color. The game will then continue, and add another color to the sequence with each new round. The game ends when the player fails to press the correct colors in the right order.
+
+---
