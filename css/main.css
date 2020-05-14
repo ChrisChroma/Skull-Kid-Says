@@ -13,6 +13,12 @@ body {
   background-size: cover;
 }
 
+#message {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
 #showMenu {
   border: 1px solid black;
   margin: 20px;
