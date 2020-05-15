@@ -100,23 +100,35 @@ body {
   margin: 0 -50px;
 }
 
-#red:active,
 #red:hover {
+  background-color: red;
+}
+
+#green:hover {
+  background-color: green;
+}
+
+#blue:hover {
+  background-color: blue;
+}
+
+#gold:hover {
+  background-color: gold;
+}
+
+#red:active {
   background-color: red !important;
 }
 
-#green:active,
-#green:hover {
+#green:active {
   background-color: green !important;
 }
 
-#blue:active,
-#blue:hover {
+#blue:active {
   background-color: blue !important;
 }
 
-#gold:active,
-#gold:hover {
+#gold:active {
   background-color: gold !important;
 }
 
