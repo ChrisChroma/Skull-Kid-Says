@@ -7,21 +7,26 @@ let playerChoice = [];
 let themeChoice = [];
 let bgMusic;
 
+const soundEffects = [];
+
 const themes = [
   {
     name: "lostWoods",
+    message: "white",
     music: new Audio("audio/Sarias Theme SSBU.mp3"),
     background:
       "url(https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311)",
   },
   {
     name: "clockTown",
+    message: "white",
     music: new Audio("audio/Clock Town Day 1.mp3"),
     background:
       "url(https://pbs.twimg.com/media/CTyCureUkAAjvkW?format=jpg&name=large)",
   },
   {
     name: "songOfStorms",
+    message: "black",
     music: new Audio("audio/Song of Storms SSBU.mp3"),
     background:
       "url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6c0272ad-8c88-47cf-aa76-21663d92348e/ddwofoa-723e436d-bd18-414e-94cd-413dcd068636.jpg/v1/fill/w_1192,h_670,q_70,strp/song_of_storms_by_jasqreate_ddwofoa-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD02NzUiLCJwYXRoIjoiXC9mXC82YzAyNzJhZC04Yzg4LTQ3Y2YtYWE3Ni0yMTY2M2Q5MjM0OGVcL2Rkd29mb2EtNzIzZTQzNmQtYmQxOC00MTRlLTk0Y2QtNDEzZGNkMDY4NjM2LmpwZyIsIndpZHRoIjoiPD0xMjAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.-RE33Zujpg-7PODWKCultGWKxrB3WEci1WrFbuKABTo)",
@@ -39,6 +44,8 @@ const themeMenu = document.getElementById("themeMenu");
 const lostWoodsTheme = document.getElementById("lostWoods");
 const clockTownTheme = document.getElementById("clockTown");
 const songOfStormsTheme = document.getElementById("songOfStorms");
+const loseLaugh = new Audio("audio/SkullKidLaugh.wav");
+const loseMusic = new Audio("audio/MM - Game Over.mp3");
 
 // Event Listeners
 gamePieces.forEach(function (element) {
@@ -62,7 +69,12 @@ gamePieces.forEach(function (element) {
         play(round, computerChoice, gamePieces);
       }
     } else {
-      msgEl.innerText = "Skull Kid Says: Ehehe! Better luck next time!";
+      msgEl.innerText = "Ehehe! Better luck next time!";
+      loseLaugh.volume = 0.1;
+      loseMusic.volume = 0.05;
+      loseLaugh.play();
+      loseMusic.play();
+      pauseBgMusic();
       reset();
     }
   });
@@ -101,9 +113,6 @@ function getComputerSelection(round, compSelectArr) {
 }
 
 function colorFlash(compChoice, pieces) {
-  pieces.forEach(function (element) {
-    element.disabled = true;
-  });
   let timer = 0;
   compChoice.forEach(function (num) {
     setTimeout(() => {
@@ -112,13 +121,17 @@ function colorFlash(compChoice, pieces) {
         pieces[num].style.backgroundColor = "lightgray";
       }, 750);
     }, timer + 500);
+    if (compChoice === 0) {
+
+    } else if (compChoice === 1) {
+
+    } else if (compChoice === 2) {
+
+    } else if (compChoice === 3) {
+      
+    }
     timer += 1000;
   });
-  setTimeout(() => {
-    pieces.forEach(function (element) {
-      element.disabled = false;
-    });
-  }, timer - 1000);
 }
 
 function gamePieceReset() {
@@ -145,6 +158,7 @@ function reset() {
 }
 
 function selectTheme(theme) {
+  msgEl.style.color = themes[theme].message;
   bgMusic = themes[theme].music;
   bgMusic.pause();
   changeBg(theme);

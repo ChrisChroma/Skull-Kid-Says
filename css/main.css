@@ -7,20 +7,24 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url(https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311);
   background-size: cover;
+  font-family: "Press Start 2P", cursive;
 }
 
 #start {
   width: 100px;
   height: 40px;
   position: relative;
+  margin: 30px;
+  font-size: large;
 }
 
 #message {
-  color: white;
+  color: black;
   display: flex;
   flex-direction: row;
 }
