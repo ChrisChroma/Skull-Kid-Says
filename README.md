@@ -26,11 +26,17 @@ When the player opens the game up, they can select a theme with a background son
 
 ## Screenshots
 
-![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+![alt text](https://i.imgur.com/2LMjFtm.jpg "Lost Woods Theme")
 
-![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+![alt text](https://i.imgur.com/lLUth1T.jpg "Clock Town Theme")
 
-![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+![alt text](https://i.imgur.com/UVerrnr.jpg "Song of Storms Theme")
+
+---
+
+## Wireframe
+
+![alt text](https://i.imgur.com/JaPyLZW.png "Wireframe")
 
 ---
 
