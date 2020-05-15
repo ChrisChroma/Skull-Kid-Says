@@ -41,3 +41,5 @@ Lost Woods By Tree-ink on [DeviantArt](https://www.deviantart.com/tree-ink/art/L
 新しい日 by @ueko8 on [Twitter](https://twitter.com/ueko808/status/665550586310361089?s=20)
 
 Song of Storms by Jasqreate on [DeviantArt](https://www.deviantart.com/jasqreate/art/Song-of-Storms-840948058)
+
+All Music and Sound Effects by Nintendo.

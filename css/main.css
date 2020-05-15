@@ -35,7 +35,12 @@ body {
   flex-direction: row;
 }
 
+#themeMenu {
+  display: flex;
+}
+
 #showMenu,
+#hideMenu,
 .theme {
   border: none;
   margin: 20px;
@@ -50,6 +55,7 @@ body {
 }
 
 #showMenu:active,
+#hideMenu:active,
 .theme:active {
   background-color: gray;
   color: white;
