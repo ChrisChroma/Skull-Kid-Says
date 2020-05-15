@@ -37,7 +37,7 @@ const msgEl = document.getElementById("message");
 const gamePieces = document.querySelectorAll(".game-piece");
 const start = document.getElementById("start");
 const menu = document.getElementById("themeMenu");
-const showMenu = document.getElementById("showMenu");
+const themesEl = document.getElementById("themes");
 const themeMenu = document.getElementById("themeMenu");
 const lostWoodsTheme = document.getElementById("lostWoods");
 const clockTownTheme = document.getElementById("clockTown");
@@ -175,6 +175,7 @@ function reset() {
 
 function selectTheme(theme) {
   msgEl.style.color = themes[theme].message;
+  themesEl.style.color = themes[theme].message;
   bgMusic = themes[theme].music;
   bgMusic.pause();
   changeBg(theme);
