@@ -7,8 +7,6 @@ let playerChoice = [];
 let themeChoice = [];
 let bgMusic;
 
-const soundEffects = [];
-
 const themes = [
   {
     name: "lostWoods",
@@ -46,6 +44,16 @@ const clockTownTheme = document.getElementById("clockTown");
 const songOfStormsTheme = document.getElementById("songOfStorms");
 const loseLaugh = new Audio("audio/SkullKidLaugh.wav");
 const loseMusic = new Audio("audio/MM - Game Over.mp3");
+const redSound = new Audio("audio/ganon.wav");
+const greenSound = new Audio("audio/link.wav");
+const yellowSound = new Audio("audio/Tatl.wav");
+const blueSound = new Audio("audio/zelda.wav");
+const redBtn = document.getElementById("red");
+const greenBtn = document.getElementById("green");
+const yellowBtn = document.getElementById("gold");
+const blueBtn = document.getElementById("blue");
+
+const soundEffects = [redSound, greenSound, yellowSound, blueSound];
 
 // Event Listeners
 gamePieces.forEach(function (element) {
@@ -78,6 +86,22 @@ gamePieces.forEach(function (element) {
       reset();
     }
   });
+});
+
+redBtn.addEventListener("click", function () {
+  redSound.play();
+});
+
+greenBtn.addEventListener("click", function () {
+  greenSound.play();
+});
+
+yellowBtn.addEventListener("click", function () {
+  yellowSound.play();
+});
+
+blueBtn.addEventListener("click", function () {
+  blueSound.play();
 });
 
 start.addEventListener("click", function () {
@@ -117,19 +141,11 @@ function colorFlash(compChoice, pieces) {
   compChoice.forEach(function (num) {
     setTimeout(() => {
       pieces[num].style.backgroundColor = colors[num];
+      soundEffects[num].play();
       setTimeout(() => {
         pieces[num].style.backgroundColor = "lightgray";
       }, 750);
     }, timer + 500);
-    if (compChoice === 0) {
-
-    } else if (compChoice === 1) {
-
-    } else if (compChoice === 2) {
-
-    } else if (compChoice === 3) {
-      
-    }
     timer += 1000;
   });
 }
@@ -180,6 +196,10 @@ function playBgMusic() {
 
 function init() {
   selectTheme(0);
+  redSound.volume = 0.2;
+  greenSound.volume = 0.2;
+  yellowSound.volume = 0.2;
+  blueSound.volume = 0.2;
 }
 
 init();
