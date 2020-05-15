@@ -7,42 +7,52 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-image: url(https://cdna.artstation.com/p/assets/images/images/003/023/956/large/sergio-briseno-kokiri-2prnt.jpg?1468621311);
   background-size: cover;
+  font-family: "Press Start 2P", cursive;
+}
+
+#start {
+  width: 140px;
+  height: 40px;
+  position: relative;
+  margin: 30px;
+  font-size: large;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: goldenrod;
+  font-family: "Press Start 2P", cursive;
 }
 
 #message {
-  color: white;
+  color: black;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-#showMenu {
-  border: 1px solid black;
-  margin: 20px;
-  width: 100px;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-#showMenu:active {
-  background-color: gray;
-}
-
+#showMenu,
 .theme {
-  border: 1px solid black;
+  border: none;
   margin: 20px;
   width: 100px;
+  height: 30px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  border-radius: 10px;
+  font-family: "Press Start 2P", cursive;
 }
 
+#showMenu:active,
 .theme:active {
   background-color: gray;
+  color: white;
 }
 
 #game-board {
@@ -52,7 +62,7 @@ body {
 
 .game-piece {
   height: 100px;
-  width: 100px;
+  width: 115px;
   background-color: lightgray;
   border: none;
   cursor: pointer;
@@ -81,7 +91,7 @@ body {
 
 .triangle-down {
   clip-path: polygon(50% 100%, 0 0, 100% 0);
-  margin: 0 -45px;
+  margin: 0 -50px;
 }
 
 #red:active,
@@ -102,4 +112,18 @@ body {
 #gold:active,
 #gold:hover {
   background-color: gold !important;
+}
+
+@media all and (min-width: 520px), (min-width: 1151px) {
+  .game-piece {
+    height: 200px;
+    width: 230px;
+  }
+  #top-row {
+    margin-bottom: 15px;
+  }
+  .triangle-down {
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    margin: 0 -100px;
+  }
 }

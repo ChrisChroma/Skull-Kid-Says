@@ -23,3 +23,21 @@ When the player opens the game up, they can select a theme with a background son
 [Click here to play!](https://chrischroma.github.io/Skull-Kid-Says/)
 
 ---
+
+## Screenshots
+
+![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+
+![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+
+![alt text](https://i.imgur.com/3DUDfWx.jpg "Lost Woods Theme")
+
+---
+
+# Credits
+
+Lost Woods By Tree-ink on [DeviantArt](https://www.deviantart.com/tree-ink/art/Lost-Woods-607901175)
+
+新しい日 by @ueko8 on [Twitter](https://twitter.com/ueko808/status/665550586310361089?s=20)
+
+Song of Storms by Jasqreate on [DeviantArt](https://www.deviantart.com/jasqreate/art/Song-of-Storms-840948058)
