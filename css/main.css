@@ -13,10 +13,16 @@ body {
   background-size: cover;
 }
 
+#start {
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
 #message {
   color: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #showMenu {
@@ -52,7 +58,7 @@ body {
 
 .game-piece {
   height: 100px;
-  width: 100px;
+  width: 115px;
   background-color: lightgray;
   border: none;
   cursor: pointer;
@@ -81,7 +87,7 @@ body {
 
 .triangle-down {
   clip-path: polygon(50% 100%, 0 0, 100% 0);
-  margin: 0 -45px;
+  margin: 0 -50px;
 }
 
 #red:active,
@@ -102,4 +108,18 @@ body {
 #gold:active,
 #gold:hover {
   background-color: gold !important;
+}
+
+@media all and (min-width: 520px), (min-width: 1151px) {
+  .game-piece {
+    height: 200px;
+    width: 230px;
+  }
+  #top-row {
+    margin-bottom: 15px;
+  }
+  .triangle-down {
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    margin: 0 -100px;
+  }
 }
